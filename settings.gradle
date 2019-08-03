@@ -1,0 +1,4 @@
+rootProject.name = 'liyang'
+
+include ':delay-job-core'
+include ':delay-job-starter'

@@ -1,0 +1,35 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+env:
+  global:
+     # OSS_NEXUS_USER
+     - secure: "hIDtqv+IcHACHLrvioRM3pOsanAdXOEFqRGWsdyEFwT/i2Jd6YIfFQk+RZLS+GwppfqDxH+pkQh6XtLJrahOb8JnMHc6/Rij5MccNIFwACd301jCuPcVe4mvVbhHe0qyLqopflEKbfmEL0DS1dXfevWsM9DFCl2vL799Z9QHlZo8gcYakjgnH23WRYz5ei+sVdW9rm9PDsC8LEx22XMeLhcGYokAoEzURrLRGV9B+0jFxqExPVWOtPEDPO0OqR5m3MR3dNmpr9yjkBZE2cwCI/WtMi6DmdL/kX0I88RBlCogPduUwo+82vu0uWMdd1pgWYsYuUx40kiYz5FJtaKdvAOx5eyF85QKsRdzweLg+sDGZ9GmcWjEaQVWksKBtowgChjYjt42nThXTuzteTyZFyScYyo218GFr/mQuUAd/6InUx3+6P1afTxRDQ0g933SThgESL6xgMCzCKWl1h+Hk2Re0ZeCaBd6nyBWfjqU7szQeS7ungCGGX1f4+611GWoWu9vfJlvBq66mqbfNyDZs2/Ml66kR99Uj/mhIm27zGqx8EqqeWwLj8OZYZBsLdRKVdvgPK4kDL9CTFCvLvy3mc2NDnf33k5yOJGONsIThfYgdur/Mz43jZ2YgZAyWQ4apkgaowIS/8lSUgzBixveODuwzXxmlewS/e+XhkST7h0="
+     # OSS_NEXUS_PASS
+     - secure: "BpwJ5S8N3XvK6RviBzqRDm05fe425X22TtoGk3H0KGuDKgXPdh+ioExdiIpDJQtQCz4gYnGxC3zeqTaO372J1i8jyZ7bou+Jiummdh9dBUgR1hhB4izEwo3qAObfUWYY6p9UV5Y+txMIak120KOINhPz8L0PKbq3dCk8p8NtfhG94+u84EvXkhsmoGDL2jjjUTdMHrAch3ygVCNGJH+SG80rD5btEYjxE40BE03c2jZw3PYu3mY7uKOb31FB410yeMFc7ybHYmOqfUxu1fd5peXiOTS0Ft8jR10VptAztnPqrt/7r9DPO+iifrEnVoaXs7o9FQppnx2IVuxDERGLk1PyqAuOO+twN4jkhfTtsGiOz7YVduqfRSfiQHLzh83Lr/fEDSHQXIuu48hBX3R8RTgHEAxr5urbvFSVmO7Mf/ClFZINhTidzcgzCRvlQhHzDu68U8Kdc31FBniISzaRCYEtO1g07E0stnMmHFsw1vLBKSCk8XgpkbQvWJdny5hmoiToZ1Bu886zMbKgPCMJiCpLTTG58aGE4BpuBzgjqaCuzkvygI9rc8BANDNY4rlG3G8hcIpasO7PWdAjZQ8oY6fjH32WV8RyJB6J1KDAQpfO+KJVaFyUe5tofqtbpRawzhAT2BmbzOACb7VV2/g8Qdxx/5hsD8WdxYymHeY4BNs="
+
+     # BINTRAY_USER
+     - secure: "QNq1jufsXivxf7jNDb98zJ2sVw6K29uf0hBU87rNhjqaA7d81xmIYDZ36cl6WQHB2o4xoMkVYaLJi2h/6xLiUPCwubCQmneQZQikngRWicMT3sfCADLsxAcIhzAN+a2/UWq5I6gBpjS5jKHFLsQ0cD8g/87rwcuo647QMy8S43mzsqYKbQhEzk7WjUG0vI27J7kriuLGMppLWuqIL6IOlmjrdmJlPMrHqk+fDEpPKj3q++3talGrWmzPdd7WYcUnfwEzqUd3aeEA//KRheznnrSyjy7MCtLqsQrxa9vouZ0viYu6bCXWz7NmbXHfmrrQ0dOgSgREukx5hahIW8l2JW7TZYlMfsFaPIiw6bhPrgbmADEt/f+KRLADX+lqRfH4A/TqnlNwK/HGQe9NIcyVrvHzga4n6XyZL0exUODkqHT3suJ52jTimA/2bMeI+fl1UFQBS+Gfz8TcuE3YVF7i/jSHU8+1Lg/3ju1W2Lsrz7z+N2peZyKYIIxpBbW+ksN6FrgE5P1tHMqLraV8ZXYIZAOQPksa6uwYkChU77jtIhGMUN7A1Xawq3OuBqm4BEWFTqbzE0d6G9o/Uwk/1qcMii3ZlcVLV9Gfd2b2c8/+53HglJ/PN4xUmKLxlgHYIHE/LmhVpQp0ZZi4ZSeL7/euS81eQ6Xg4cwXD/PCjOGIDd0="
+     # BINTRAY_KEY
+     - secure: "wagTTF6AXFGxQm14dl7uHSd6gD/Zd2Aqs5IyZLr75Vvku8jnGrcRMNHdHi3y2Ayzo3lmN2o0LvEnJH94euGIWD8P3k6ttBimbPQLMsrsKYKYrfyeSJKZK8bB/RL0TJsLDzoK5RFLXowmcS6emuw31YPZGHAem4Rr9P5/2dDChapql8xodH0A3KgEK/fdvExVPfjko46cx1phdX/vts01Q3tWDkihZvntrKdZsS2ZyuhV/OherPnQTRaDKrw8+YgHo7eJVWKdhNR081pYRrSLqwzaf+ComdAdbfVDTqGHS658KnAFG5AeFdQexjyspv5Tz4mB/+Cp7I1tp7rxNK3aO7TZrsdBlmefrUlIjplz6tRiM8CoppXeKleXamzTOxDaVA5s6KVv9FjY7mY3goeiO8ZkIGIc+nXimyBbkMPVvLshaoeuFjJdaNBFw660hTbkU7/xTBVzHKhpLa3VWizbyw5V4AF1KxfdF+jxIzuFI9bfCtsaU9utWGEf30O+nvbwfw20mEQ0xusnDJn4ei+TWKKKRKf+5JhMU9mRsfzyYgxoAo1B2ChtgyIr+aaOblPVnetbLJCR/TqLs94aDczmlhIfeL4X0x1Li9sQcVzeS+4YI6GC3O+hyA+1WaUSu+yVntwIP8bGp4jd8OscWhr4biSFJAzBpAXtgnVCjbBHHEU="
+
+install: ./gradlew clean
+before_script:
+  - ./go.sh docker
+script: ./gradlew test
+
+deploy:
+  - provider: script
+    script: ./gradlew publish
+    on:
+      tags: false
+  - provider: script
+    script: ./gradlew bintrayUpload
+    on:
+      tags: true
+
+cache:
+  directories:
+    - ~/.gradle/
