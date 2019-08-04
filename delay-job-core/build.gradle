@@ -48,6 +48,8 @@ dependencies {
 
     // spring boot meta data
     compileOnly("org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}")
+
+    compile 'org.modelmapper:modelmapper:2.3.5'
 }
 
 

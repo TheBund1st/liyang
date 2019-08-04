@@ -1,13 +1,17 @@
-package com.thebund1st.liyang.application.command
+package com.thebund1st.liyang.domain.model
 
-import com.thebund1st.liyang.domain.model.DelayJob
-import com.thebund1st.liyang.domain.model.JobSource
+
 import com.thebund1st.liyang.time.TestingTime
 
 import static com.thebund1st.liyang.domain.model.JobSourceFixture.aJobSource
 
-class CreateDelayJobCommandFixture {
-    private CreateDelayJobCommand target = new CreateDelayJobCommand()
+class DelayJobFixture {
+    private DelayJob target = new DelayJob()
+
+    def withId(String value) {
+        target.setId(value)
+        this
+    }
 
     def with(JobSource source) {
         target.setSource(source)
@@ -24,19 +28,13 @@ class CreateDelayJobCommandFixture {
         this
     }
 
-    def with(DelayJob delayJob) {
-        target.setSource(delayJob.getSource())
-        target.setTopic(delayJob.getTopic())
-        target.setExpires(delayJob.getExpires())
-        this
-    }
-
     def build() {
         target
     }
 
-    static def aCreateDelayJobCommand() {
-        new CreateDelayJobCommandFixture()
+    static def aDelayJob() {
+        new DelayJobFixture()
+                .withId(UUID.randomUUID().toString())
                 .with(aJobSource().build())
                 .withTopic("TEST_TOPIC")
                 .expireAfterSeconds(60)

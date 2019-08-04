@@ -1,6 +1,8 @@
 package com.thebund1st.liyang.boot;
 
-import com.thebund1st.liyang.boot.adapter.http.rest.RestEndpointConfiguration;
+import com.thebund1st.liyang.boot.adapter.http.rest.RestConfiguration;
+import com.thebund1st.liyang.boot.adapter.modelmapper.ModelMapperConfiguration;
+import com.thebund1st.liyang.boot.application.ApplicationConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -10,7 +12,9 @@ import org.springframework.context.annotation.Import;
         "com.thebund1st.liyang.adapter.http",
 })
 @Import({
-        RestEndpointConfiguration.class
+        RestConfiguration.class,
+        ModelMapperConfiguration.class,
+        ApplicationConfiguration.class
 })
 @Configuration
 public class DelayJobAutoConfiguration {
