@@ -9,9 +9,13 @@ class DelayJobFixture {
     private DelayJob target = new DelayJob()
 
 
-    def withId(DelayJob.Identifier value) {
+    def with(DelayJob.Identifier value) {
         target.setId(value)
         this
+    }
+
+    def withId(String value) {
+        with(new DelayJob.Identifier(value))
     }
 
     def with(JobSource source) {
@@ -25,7 +29,16 @@ class DelayJobFixture {
     }
 
     def expireAfterSeconds(int value) {
-        target.setExpires(TestingTime.nowWithZone().plusSeconds(value).toEpochSecond())
+        withExpires(TestingTime.nowWithZone().plusSeconds(value).toEpochSecond())
+    }
+
+    def withExpires(long value) {
+        target.setExpires(value)
+        this
+    }
+
+    def closed() {
+        target.setStatus(DelayJob.Status.CLOSED)
         this
     }
 
@@ -35,7 +48,7 @@ class DelayJobFixture {
 
     static def aDelayJob() {
         new DelayJobFixture()
-                .withId(nextId())
+                .with(nextId())
                 .with(aJobSource().build())
                 .withTopic("TEST_TOPIC")
                 .expireAfterSeconds(60)

@@ -1,7 +1,7 @@
 package com.thebund1st.liyang.boot.application;
 
-import com.thebund1st.liyang.application.CreateDelayJobCommandHandler;
 import com.thebund1st.liyang.application.impl.CreateDelayJobCommandHandlerImpl;
+import com.thebund1st.liyang.application.impl.TriggerDelayJobCommandHandlerImpl;
 import com.thebund1st.liyang.domain.model.DelayJobIdentifierGenerator;
 import com.thebund1st.liyang.domain.model.DelayJobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,13 @@ public class ApplicationConfiguration {
     private DelayJobRepository delayJobRepository;
 
     @Bean(name = "liyang.CreateDelayJobCommandHandlerImpl")
-    public CreateDelayJobCommandHandler createDelayJobCommandHandler() {
+    public CreateDelayJobCommandHandlerImpl createDelayJobCommandHandler() {
         return new CreateDelayJobCommandHandlerImpl(delayJobIdentifierGenerator, delayJobRepository);
+    }
+
+    @Bean(name = "liyang.TriggerDelayJobCommandHandlerImpl")
+    public TriggerDelayJobCommandHandlerImpl triggerDelayJobCommandHandler() {
+        return new TriggerDelayJobCommandHandlerImpl(delayJobRepository);
     }
 
 }

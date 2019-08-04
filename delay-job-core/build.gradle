@@ -30,6 +30,7 @@ dependencies {
     testCompile("net.bytebuddy:byte-buddy-agent:${byteBuddyVersion}")
     testCompile("net.bytebuddy:byte-buddy:${byteBuddyVersion}")
     testCompile 'org.awaitility:awaitility-groovy:3.1.2'
+    testCompile group: 'com.github.hippoom', name: 'test-data-builder', version: '0.5.0'
 
     //aop
     compileOnly("org.springframework.boot:spring-boot-starter-aop:${springBootVersion}")
@@ -38,6 +39,8 @@ dependencies {
     //jdbc
     compileOnly("org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}")
     testCompile("org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}")
+    compileOnly("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
+    testCompile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
     testCompile "mysql:mysql-connector-java:6.0.6"
 
     // jwt

@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import static com.thebund1st.liyang.domain.model.DelayJob.Status.CLOSED;
+import static com.thebund1st.liyang.domain.model.DelayJob.Status.PENDING;
+
 @Getter
 @Setter
 @ToString(of = "id")
@@ -19,6 +22,8 @@ public class DelayJob {
 
     private String topic;
 
+    private Status status = PENDING;
+
     private long expires;
     private long createdAt;
     private long lastModifiedAt;
@@ -28,6 +33,16 @@ public class DelayJob {
     }
 
     public DelayJob() {
+    }
+
+    public void triggerAt(long when) {
+        if (status == PENDING && this.expires <= when) {
+            this.status = CLOSED;
+            this.lastModifiedAt = when;
+        } else {
+            throw new IllegalStateException(String.format("Cannot trigger delay job %s, got status %s and expires %d",
+                    getId(), getStatus(), getExpires()));
+        }
     }
 
     @Getter
@@ -43,6 +58,26 @@ public class DelayJob {
         @Override
         public String toString() {
             return value;
+        }
+    }
+
+    public enum Status {
+        UNKNOWN(-1), PENDING(0), CLOSED(2), CANCELED(3);
+
+        @Getter
+        private int value;
+
+        Status(int value) {
+            this.value = value;
+        }
+
+        public static Status of(int value) {
+            for (Status status : values()) {
+                if (status.getValue() == value) {
+                    return status;
+                }
+            }
+            return UNKNOWN;
         }
     }
 }

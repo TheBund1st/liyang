@@ -9,4 +9,6 @@ public interface DelayJobRepository {
     Optional<DelayJob> findBy(DelayJob.Identifier id);
 
     DelayJob mustFindBy(DelayJob.Identifier id);
+
+    void update(DelayJob delayJob);
 }
