@@ -1,8 +1,11 @@
 package com.thebund1st.liyang.boot;
 
 import com.thebund1st.liyang.boot.adapter.http.rest.RestConfiguration;
+import com.thebund1st.liyang.boot.adapter.jdbc.JdbcConfiguration;
 import com.thebund1st.liyang.boot.adapter.modelmapper.ModelMapperConfiguration;
 import com.thebund1st.liyang.boot.application.ApplicationConfiguration;
+import com.thebund1st.liyang.boot.domain.DomainConfiguration;
+import com.thebund1st.liyang.boot.time.TimeConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -14,6 +17,9 @@ import org.springframework.context.annotation.Import;
 @Import({
         RestConfiguration.class,
         ModelMapperConfiguration.class,
+        JdbcConfiguration.class,
+        TimeConfiguration.class,
+        DomainConfiguration.class,
         ApplicationConfiguration.class
 })
 @Configuration

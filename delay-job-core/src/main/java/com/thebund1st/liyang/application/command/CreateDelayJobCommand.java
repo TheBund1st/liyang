@@ -17,4 +17,6 @@ public class CreateDelayJobCommand {
     private String topic;
 
     private long expires;
+
+    private long when;
 }

@@ -1,9 +1,11 @@
 package com.thebund1st.liyang
 
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
 import spock.lang.Specification
 
 @SpringBootTest
+@ActiveProfiles(profiles = "commit")
 class ApplicationContextSmokeTest extends Specification {
 
     def "it should load application context"() {

@@ -36,7 +36,9 @@ dependencies {
     testCompile("org.springframework.boot:spring-boot-starter-aop:${springBootVersion}")
 
     //jdbc
-//    testCompile("org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}")
+    compileOnly("org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}")
+    testCompile("org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}")
+    testCompile "mysql:mysql-connector-java:6.0.6"
 
     // jwt
     compile "io.jsonwebtoken:jjwt-api:${jjwtVersion}"

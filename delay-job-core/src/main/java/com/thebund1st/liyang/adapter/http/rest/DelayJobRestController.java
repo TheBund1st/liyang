@@ -4,6 +4,7 @@ import com.thebund1st.liyang.adapter.http.rest.assembler.DelayJobResourceAssembl
 import com.thebund1st.liyang.adapter.http.rest.resource.DelayJobResource;
 import com.thebund1st.liyang.application.CreateDelayJobCommandHandler;
 import com.thebund1st.liyang.application.command.CreateDelayJobCommand;
+import com.thebund1st.liyang.time.Clock;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +21,12 @@ public class DelayJobRestController {
 
     private final DelayJobResourceAssembler delayJobResourceAssembler;
 
+    private final Clock clock;
+
     @PostMapping("#{liyangRestEndpointProperties.createDelayJobPath}")
     @ResponseStatus(ACCEPTED)
     public DelayJobResource handle(@RequestBody CreateDelayJobCommand command) {
+        command.setWhen(clock.now().toEpochSecond());
         return delayJobResourceAssembler.toResource(createDelayJobCommandHandler.handle(command));
     }
 

@@ -4,6 +4,8 @@ import com.thebund1st.liyang.domain.model.DelayJob
 import com.thebund1st.liyang.domain.model.JobSource
 import com.thebund1st.liyang.time.TestingTime
 
+import java.time.ZonedDateTime
+
 import static com.thebund1st.liyang.domain.model.JobSourceFixture.aJobSource
 
 class CreateDelayJobCommandFixture {
@@ -28,6 +30,12 @@ class CreateDelayJobCommandFixture {
         target.setSource(delayJob.getSource())
         target.setTopic(delayJob.getTopic())
         target.setExpires(delayJob.getExpires())
+        target.setWhen(TestingTime.nowWithZone().toEpochSecond())
+        this
+    }
+
+    def withWhen(ZonedDateTime zonedDateTime) {
+        target.setWhen(zonedDateTime.toEpochSecond())
         this
     }
 

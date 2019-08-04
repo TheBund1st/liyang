@@ -8,7 +8,8 @@ import static com.thebund1st.liyang.domain.model.JobSourceFixture.aJobSource
 class DelayJobFixture {
     private DelayJob target = new DelayJob()
 
-    def withId(String value) {
+
+    def withId(DelayJob.Identifier value) {
         target.setId(value)
         this
     }
@@ -34,9 +35,13 @@ class DelayJobFixture {
 
     static def aDelayJob() {
         new DelayJobFixture()
-                .withId(UUID.randomUUID().toString())
+                .withId(nextId())
                 .with(aJobSource().build())
                 .withTopic("TEST_TOPIC")
                 .expireAfterSeconds(60)
+    }
+
+    static DelayJob.Identifier nextId() {
+        new DelayJob.Identifier(TestingIdentifier.next())
     }
 }

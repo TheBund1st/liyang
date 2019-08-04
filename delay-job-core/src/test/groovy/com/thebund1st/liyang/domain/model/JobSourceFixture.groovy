@@ -21,6 +21,6 @@ class JobSourceFixture {
     static def aJobSource() {
         new JobSourceFixture()
                 .withContext("FOO")
-                .withObjectId(UUID.randomUUID().toString())
+                .withObjectId(TestingIdentifier.next())
     }
 }
