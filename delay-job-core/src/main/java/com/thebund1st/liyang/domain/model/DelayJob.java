@@ -1,5 +1,6 @@
 package com.thebund1st.liyang.domain.model;
 
+import com.thebund1st.liyang.domain.event.DelayJobTriggeredEvent;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,10 +36,17 @@ public class DelayJob {
     public DelayJob() {
     }
 
-    public void triggerAt(long when) {
+    public DelayJobTriggeredEvent triggerAt(long when) {
         if (status == PENDING && this.expires <= when) {
             this.status = CLOSED;
             this.lastModifiedAt = when;
+            DelayJobTriggeredEvent event = new DelayJobTriggeredEvent();
+            event.setId(getId());
+            event.setVersion(getVersion());
+            event.setSource(getSource());
+            event.setTopic(getTopic());
+            event.setExpires(getExpires());
+            return event;
         } else {
             throw new IllegalStateException(String.format("Cannot trigger delay job %s, got status %s and expires %d",
                     getId(), getStatus(), getExpires()));

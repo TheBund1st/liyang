@@ -17,9 +17,9 @@ import org.springframework.context.annotation.Import;
 @Import({
         RestConfiguration.class,
         ModelMapperConfiguration.class,
+        DomainConfiguration.class,
         JdbcConfiguration.class,
         TimeConfiguration.class,
-        DomainConfiguration.class,
         ApplicationConfiguration.class
 })
 @Configuration

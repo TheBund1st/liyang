@@ -1,6 +1,8 @@
 package com.thebund1st.liyang.adapter.jdbc
 
 import com.thebund1st.liyang.boot.adapter.jdbc.JdbcConfiguration
+import com.thebund1st.liyang.domain.DomainEventPublisher
+import org.spockframework.spring.SpringBean
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.context.annotation.Import
@@ -19,4 +21,6 @@ import static org.springframework.transaction.annotation.Propagation.NOT_SUPPORT
 class AbstractJdbcTest extends Specification {
 
 
+    @SpringBean(name = "liyang.DomainEventPublisherDelegate")
+    protected DomainEventPublisher domainEventPublisherDelegate = Mock()
 }

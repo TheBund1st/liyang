@@ -1,6 +1,6 @@
 package com.thebund1st.liyang.application.impl
 
-
+import com.thebund1st.liyang.domain.event.DelayJobTriggeredEvent
 import com.thebund1st.liyang.domain.model.DelayJobRepository
 import com.thebund1st.liyang.time.TestingTime
 import org.springframework.beans.factory.annotation.Autowired
@@ -37,5 +37,8 @@ class TriggerDelayJobCommandHandlerImplTest extends AbstractApplicationImplTest 
         assert found.version == 2
         assert found.status == CLOSED
         assert found.lastModifiedAt == now.toEpochSecond()
+
+        and:
+        1 * domainEventPublisher.publish(_ as DelayJobTriggeredEvent)
     }
 }
