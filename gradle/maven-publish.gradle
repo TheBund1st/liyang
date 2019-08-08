@@ -5,7 +5,7 @@ def pomConfig = {
     licenses {
         license {
             name "The Apache Software License, Version 2.0"
-            url "https://github.com/TheBund1st/daming/blob/master/LICENSE"
+            url "https://github.com/TheBund1st/liyang/blob/master/LICENSE"
             distribution "repo"
         }
     }
@@ -18,9 +18,9 @@ def pomConfig = {
     }
 
     scm {
-        url 'scm:https://github.com/TheBund1st/daming'
-        connection 'scm:https://github.com/TheBund1st/daming'
-        developerConnection 'scm:https://github.com/TheBund1st/daming'
+        url 'scm:https://github.com/TheBund1st/liyang'
+        connection 'scm:https://github.com/TheBund1st/liyang'
+        developerConnection 'scm:https://github.com/TheBund1st/liyang'
     }
 }
 
@@ -64,7 +64,7 @@ bintray {
         repo = 'maven'
         name = project.name
         licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/TheBund1st/daming.git'
+        vcsUrl = 'https://github.com/TheBund1st/liyang.git'
         version {
             gpg {
                 sign = false
