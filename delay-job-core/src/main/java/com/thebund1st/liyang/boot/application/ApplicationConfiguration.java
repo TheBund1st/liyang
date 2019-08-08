@@ -1,5 +1,6 @@
 package com.thebund1st.liyang.boot.application;
 
+import com.thebund1st.liyang.application.impl.CancelDelayJobCommandHandlerImpl;
 import com.thebund1st.liyang.application.impl.CreateDelayJobCommandHandlerImpl;
 import com.thebund1st.liyang.application.impl.TriggerDelayJobCommandHandlerImpl;
 import com.thebund1st.liyang.domain.DomainEventPublisher;
@@ -31,6 +32,11 @@ public class ApplicationConfiguration {
     @Bean(name = "liyang.TriggerDelayJobCommandHandlerImpl")
     public TriggerDelayJobCommandHandlerImpl triggerDelayJobCommandHandler() {
         return new TriggerDelayJobCommandHandlerImpl(delayJobRepository, domainEventPublisher);
+    }
+
+    @Bean(name = "liyang.CancelDelayJobCommandHandlerImpl")
+    public CancelDelayJobCommandHandlerImpl cancelDelayJobCommandHandler() {
+        return new CancelDelayJobCommandHandlerImpl(delayJobRepository);
     }
 
 }

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import static com.thebund1st.liyang.domain.model.DelayJob.Status.CANCELED;
 import static com.thebund1st.liyang.domain.model.DelayJob.Status.CLOSED;
 import static com.thebund1st.liyang.domain.model.DelayJob.Status.PENDING;
 
@@ -36,7 +37,7 @@ public class DelayJob {
     public DelayJob() {
     }
 
-    public DelayJobTriggeredEvent triggerAt(long when) {
+    public DelayJobTriggeredEvent triggeredAt(long when) {
         if (status == PENDING && this.expires <= when) {
             this.status = CLOSED;
             this.lastModifiedAt = when;
@@ -51,6 +52,20 @@ public class DelayJob {
             throw new IllegalStateException(String.format("Cannot trigger delay job %s, got status %s and expires %d",
                     getId(), getStatus(), getExpires()));
         }
+    }
+
+    public void canceledAt(long when) {
+        if (status == PENDING) {
+            this.status = CANCELED;
+            this.lastModifiedAt = when;
+        } else {
+            throw new IllegalStateException(String.format("Cannot cancel delay job %s, got status %s and expires %d",
+                    getId(), getStatus(), getExpires()));
+        }
+    }
+
+    public boolean isPending() {
+        return getStatus().equals(PENDING);
     }
 
     @Getter

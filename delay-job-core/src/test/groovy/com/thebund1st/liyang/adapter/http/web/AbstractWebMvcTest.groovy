@@ -1,5 +1,6 @@
 package com.thebund1st.liyang.adapter.http.web
 
+import com.thebund1st.liyang.application.CancelDelayJobCommandHandler
 import com.thebund1st.liyang.application.CreateDelayJobCommandHandler
 import com.thebund1st.liyang.boot.adapter.http.rest.RestConfiguration
 import com.thebund1st.liyang.boot.adapter.modelmapper.ModelMapperConfiguration
@@ -20,6 +21,9 @@ class AbstractWebMvcTest extends Specification {
 
     @SpringBean
     protected CreateDelayJobCommandHandler createDelayJobCommandHandler = Mock()
+
+    @SpringBean
+    protected CancelDelayJobCommandHandler cancelDelayJobCommandHandler = Mock()
 
     @SpringBean
     protected Clock clock = Mock()

@@ -15,7 +15,7 @@ class DelayJobTest extends Specification {
         def delayJob = aDelayJob().withExpires(now.minusSeconds(1).toEpochSecond()).build()
 
         when:
-        delayJob.triggerAt(now.toEpochSecond())
+        delayJob.triggeredAt(now.toEpochSecond())
 
         then:
         assert delayJob.status == CLOSED
@@ -29,7 +29,7 @@ class DelayJobTest extends Specification {
         def delayJob = aDelayJob().withId("1").withExpires(expires).build()
 
         when:
-        delayJob.triggerAt(now.toEpochSecond())
+        delayJob.triggeredAt(now.toEpochSecond())
 
         then:
         def thrown = thrown(Exception)
@@ -48,10 +48,44 @@ class DelayJobTest extends Specification {
                 .build()
 
         when:
-        delayJob.triggerAt(now.toEpochSecond())
+        delayJob.triggeredAt(now.toEpochSecond())
 
         then:
         def thrown = thrown(Exception)
         assert thrown.message == "Cannot trigger delay job 1, got status CLOSED and expires ${expires}"
+    }
+
+    def "it should not cancel job closed given closed"() {
+        given:
+        def now = TestingTime.nowWithZone()
+
+        def delayJob = aDelayJob()
+                .withId("1")
+                .closed()
+                .build()
+
+        when:
+        delayJob.canceledAt(now.toEpochSecond())
+
+        then:
+        def thrown = thrown(Exception)
+        assert thrown.message == "Cannot cancel delay job 1, got status CLOSED and expires ${delayJob.expires}"
+    }
+
+    def "it should not cancel job closed given canceled"() {
+        given:
+        def now = TestingTime.nowWithZone()
+
+        def delayJob = aDelayJob()
+                .withId("1")
+                .canceled()
+                .build()
+
+        when:
+        delayJob.canceledAt(now.toEpochSecond())
+
+        then:
+        def thrown = thrown(Exception)
+        assert thrown.message == "Cannot cancel delay job 1, got status CANCELED and expires ${delayJob.expires}"
     }
 }

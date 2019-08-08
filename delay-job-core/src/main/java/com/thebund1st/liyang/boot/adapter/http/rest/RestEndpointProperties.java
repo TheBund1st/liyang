@@ -7,4 +7,6 @@ public class RestEndpointProperties {
 
     private String createDelayJobPath = "/api/delay/jobs";
 
+    private String cancelDelayJobPath = "/api/delay/jobs";
+
 }

@@ -42,6 +42,11 @@ class DelayJobFixture {
         this
     }
 
+    def canceled() {
+        target.setStatus(DelayJob.Status.CANCELED)
+        this
+    }
+
     def build() {
         target
     }

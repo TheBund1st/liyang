@@ -20,7 +20,7 @@ public class TriggerDelayJobCommandHandlerImpl implements TriggerDelayJobCommand
     @Override
     public void handle(TriggerDelayJobCommand command) {
         DelayJob delayJob = delayJobRepository.mustFindBy(command.getId());
-        DelayJobTriggeredEvent event = delayJob.triggerAt(command.getWhen());
+        DelayJobTriggeredEvent event = delayJob.triggeredAt(command.getWhen());
         delayJobRepository.update(delayJob);
         domainEventPublisher.publish(event);
     }
