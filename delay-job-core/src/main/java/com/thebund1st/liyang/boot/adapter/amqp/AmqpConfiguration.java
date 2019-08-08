@@ -1,6 +1,6 @@
 package com.thebund1st.liyang.boot.adapter.amqp;
 
-import com.thebund1st.liyang.adapter.amqp.AmqpDomainEventPublisher;
+import com.thebund1st.liyang.adapter.amqp.AmqpDelayJobTriggeredEventPublisher;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -15,9 +15,9 @@ public class AmqpConfiguration {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Bean(name = "liyang.DomainEventPublisherDelegate")
-    protected AmqpDomainEventPublisher amqpDomainEventPublisher() {
-        return new AmqpDomainEventPublisher(rabbitTemplate);
+    @Bean
+    protected AmqpDelayJobTriggeredEventPublisher amqpDelayJobTriggeredEventPublisher() {
+        return new AmqpDelayJobTriggeredEventPublisher(rabbitTemplate);
     }
 
     @Bean

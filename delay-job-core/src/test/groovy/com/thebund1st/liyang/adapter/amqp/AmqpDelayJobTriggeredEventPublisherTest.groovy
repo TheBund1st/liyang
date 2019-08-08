@@ -16,10 +16,10 @@ import static com.thebund1st.liyang.domain.model.JobSourceFixture.aJobSource
 @Import(AmqpTestConfiguration)
 @SpringBootTest
 @ActiveProfiles(profiles = "commit")
-class AmqpDomainEventPublisherTest extends Specification {
+class AmqpDelayJobTriggeredEventPublisherTest extends Specification {
 
     @Autowired
-    private AmqpDomainEventPublisher amqpDomainEventPublisher
+    private AmqpDelayJobTriggeredEventPublisher subject
 
     @Autowired
     private RabbitTemplate rabbitTemplate
@@ -39,7 +39,7 @@ class AmqpDomainEventPublisherTest extends Specification {
         ).build()
 
         when:
-        amqpDomainEventPublisher.publish(event)
+        subject.publish(event)
 
         then:
         def received = rabbitTemplate.receive(queueName, 1000)

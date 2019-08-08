@@ -1,5 +1,6 @@
 package com.thebund1st.liyang.boot;
 
+import com.thebund1st.liyang.boot.adapter.event.EventConfiguration;
 import com.thebund1st.liyang.boot.adapter.http.rest.RestConfiguration;
 import com.thebund1st.liyang.boot.adapter.jdbc.JdbcConfiguration;
 import com.thebund1st.liyang.boot.adapter.modelmapper.ModelMapperConfiguration;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Import;
 @Import({
         RestConfiguration.class,
         ModelMapperConfiguration.class,
+        EventConfiguration.class,
         DomainConfiguration.class,
         JdbcConfiguration.class,
         TimeConfiguration.class,
